@@ -1,0 +1,13 @@
+<ul id="conList">
+    <li ng-repeat="student in students">
+        <span class="fir">{{student.id}}</span>
+        <span>{{student.name}}</span>
+        <span class="fir">{{student.age}}</span>
+        <span>{{student.phone}}</span>
+        <span>{{student.address}}</span>
+        <span class="control">
+            <a href="#/student/update/{{student.id}}">修改</a>
+            <a href="##" ng-click="remove(student.id)">删除</a>
+        </span>
+    </li>
+</ul>

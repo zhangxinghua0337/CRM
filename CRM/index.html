@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM客户管理系统基础功能</title>
+    <link charset="utf-8" type="text/css" rel="stylesheet" href="public/css/index.css"/>
+</head>
+<body>
+<div class="box">
+    <a href="#/student/add" class="link">NEW CUSTOMER</a>
+    <h2>
+        <span class="fir">ID</span>
+        <span>NAME</span>
+        <span class="fir">AGE</span>
+        <span>PHONE</span>
+        <span>ADDRESS</span>
+        <span>CONTROL</span>
+    </h2>
+    <div ng-view></div>
+</div>
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-resource/angular-resource.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script>
+    var app = angular.module('appModule', ['ngResource', 'ngRoute']);
+    app.factory('page', function ($resource) {
+        return $resource('/students/:id', null, {
+            update: {
+                method: 'PUT'
+            }
+        })
+    });
+    app.config(function ($routeProvider) {
+        $routeProvider.when('/', {
+            templateUrl: 'tmpl/index.html',
+            controller: 'indexCtrl'
+        }).when('/student/add', {
+            templateUrl: 'tmpl/add.html',
+            controller: 'addCtrl'
+        }).when('/student/update/:id', {
+            templateUrl: 'tmpl/update.html',
+            controller: 'updateCtrl'
+        }).otherwise('/');
+    });
+    app.controller('indexCtrl', function ($scope, page, $routeParams, $location) {
+        $scope.students = page.query();
+        $scope.remove = function (id) {
+            page.delete({id: id}, $scope.student).$promise.then(function () {
+//                $location.path('/');
+                $scope.students = page.query();
+            })
+        }
+    });
+    app.controller('addCtrl', function ($scope, page, $location) {
+        $scope.add = function () {
+            page.save($scope.student).$promise.then(function () {
+                $location.path('/');
+            });
+        }
+    });
+    app.controller('updateCtrl', function ($scope, page, $routeParams, $location) {
+        var id = $routeParams.id;
+        $scope.student = page.get({id: id});
+        $scope.update = function () {
+            page.update({id: id}, $scope.student).$promise.then(function () {
+                $location.path('/');
+            })
+        };
+    })
+</script>
+</body>
+</html>

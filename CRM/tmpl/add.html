@@ -1,0 +1,19 @@
+<div class="box2">
+    <div>
+        <span>姓名:</span>
+        <input type="text" id="userName" value="{{student.name}}" ng-model="student.name"/>
+    </div>
+    <div>
+        <span>年龄:</span>
+        <input type="text" id="userAge" value="{{student.age}}" ng-model="student.age"/>
+    </div>
+    <div>
+        <span>电话:</span>
+        <input type="text" id="userPhone" value="{{student.phone}}" ng-model="student.phone"/>
+    </div>
+    <div>
+        <span>地址:</span>
+        <input type="text" id="userAddress" value="{{student.address}}" ng-model="student.address"/>
+    </div>
+    <input type="submit" value="提交" id="submit" ng-click="add()" method="post"/>
+</div>
