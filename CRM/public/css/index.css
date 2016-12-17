@@ -26,13 +26,13 @@ ul, li {
     margin: 10px auto;
     padding: 10px;
     width: 1000px;
-    border: 2px solid green;
+    border: 2px solid orange;
 }
 
 .box .link {
     display: block;
     line-height: 35px;
-    color: green;
+    color: orange;
 }
 
 .box .link:hover {
@@ -46,7 +46,7 @@ ul, li {
 
     color: #FFF;
     font-size: 14px;
-    background: green;
+    background: orange;
 }
 
 .box h2 span, .box ul li span {
@@ -67,7 +67,7 @@ ul, li {
 .box ul li span.control a {
     display: inline-block;
     margin: 0 5px;
-    color: green;
+    color: orange;
 }
 
 /*使用CSS3中新增加的选择器实现隔行变色*/
@@ -76,7 +76,7 @@ ul, li {
 }
 
 .box ul li:hover {
-    background: #fcf0b5;
+    background: #77ecfb;
 }
 
 /*----ADD----*/
@@ -88,7 +88,7 @@ input {
     margin: 10px auto;
     padding: 10px;
     width: 500px;
-    border: 2px solid green;
+    border: 2px solid orange;
 }
 
 .box2 div {
@@ -126,7 +126,7 @@ input {
     cursor: pointer;
 
     color: #FFF;
-    background: green;
+    background: orange;
     border: 1px solid #CCC;
 }
 
